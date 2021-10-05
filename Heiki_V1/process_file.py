@@ -54,10 +54,6 @@ def index():
                 title_w_unique_id.append(unique_filename) #Append title + unique number
                 file.save(os.path.join('./Heiki_V1/uploaded_files/', unique_filename))
                 input_files.append(url_for('process_file.uploaded_file', filename=unique_filename))
-        print('INPUT_BLUEPRINT======INPUT TYPE==========',input_type)
-        print('INPUT_BLUEPRINT======INPUT title==========',input_title)
-        print('INPUT_BLUEPRINT======INPUT files==========',files)
-
         #################
         #File Processing#
         #################
