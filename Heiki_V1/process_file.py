@@ -23,7 +23,7 @@ ALLOWED_EXTENSIONS = {'docx', 'jpg', 'jpeg','png'}
 
 original_words = [] #Words for column 1 will be put in here
 kana_and_eng_def = [] #Words for column 2 will be put in here
-combined = [] #the loop will place all the words from each of the images passed in in here when it concatinates the list of words for each image together
+combined = [] #The loop will place all the words from each of the images passed in (in the case of multiple images) in here when it concatinates the list of words for each image together.
 
 #1. ===Define functions===
 
@@ -61,20 +61,20 @@ def remove_irrelevant_characters(input_list): #This removes some verb components
     unwanted_particles_removed_list = [item for item in input_list if item not in unwanted_particles_etc] #We use a list comprehension to remove them
     return unwanted_particles_removed_list
 
-def remove_single_katakana(input_list): #single katanaka characters are removed from the list (they do not have a meaning on their own)
+def remove_single_katakana(input_list): #Single katanaka characters are removed from the list (they do not have a meaning on their own)
     single_katakana = {'ア','イ','ウ','エ','オ','カ','キ','く','ケ','コ','サ','シ','ス','セ','ソ','タ','チ','ツ','テ','ト','ナ','ニ','ヌ','ネ',
     'ノ','ハ','ヒ','フ','ヘ','ホ','マ','ミ','ム','メ','モ','ヤ','ユ','ヨ','ラ','リ','ル','レ','ロ','ワ','ヲ'} #All commonly used katakana
     single_katanaka_removed_list = [item for item in input_list if item not in single_katakana]
     return single_katanaka_removed_list
 
-def remove_single_hiragana(input_list): #single hiragana characters are removed from the list (they do not have a meaning on their own)
+def remove_single_hiragana(input_list): #Single hiragana characters are removed from the list (they do not have a meaning on their own)
     single_hiragana = {'あ','い','う','え','お','か','き','く','け','こ','が','ぎ','ぐ','げ','ご','さ','し','す','せ','そ','ざ','じ',
     'ず','ぜ','ぞ','た','ち','つ','て','と','だ','ぢ','づ','で','ど','な','に','ぬ','ね','の','は','ひ','ふ','へ','ほ','ば','び','ぶ',
     'べ','ぼ','ぱ','ぴ','ぷ','ぺ','ぽ','ま','み','む','め','も','や','ゆ','よ','ら','り','る','れ','ろ','わ','を','ん'}# All commonly used Hiragana
     single_hiragana_removed_list = [item for item in input_list if item not in single_hiragana]
     return single_hiragana_removed_list
 
-def add_items_to_original_word_list(input_list): #Appends words to the original words list (words which will go in column 1) in the global scope
+def add_items_to_original_word_list(input_list): #Appends words to the original words list (words which will go in column 1) 
     if not input_list: #Error handling for the event that input_list is empty (this would occur in the event that there were not Japanese characters in the image or document)
         print('Error - No Japanese words in images')
         sys.exit(1)
@@ -82,7 +82,7 @@ def add_items_to_original_word_list(input_list): #Appends words to the original 
         original_words.append(item)
     return original_words
 
-# @measure #decorator to measure how long a function takes to run
+# @measure #Decorator to measure how long a function takes to run
 def get_reading_and_eng(input_list): #This uses Jamdict to return a list of strings, each string contains the hiragana and english definitions for each of the words in our original words list (above function)
     jmd = Jamdict()
     for item in input_list:   
@@ -92,12 +92,12 @@ def get_reading_and_eng(input_list): #This uses Jamdict to return a list of stri
 
 
 process_file = Blueprint('process_file', __name__)
-@process_file.route('/', methods=['GET', 'POST']) #This is the homepage which will take the input
+@process_file.route('/', methods=['GET', 'POST']) #This is the homepage which will receive the input
 def index():
     ###########
     #Input    #
     ###########
-    if request.method == 'POST': #Arguably it would be nice to have some input error handling here incase the front-end interface is changed in the future
+    if request.method == 'POST': #Arguably it would be nice to have some input error handling/validation here
         global title_w_unique_id
         title_w_unique_id = []
         global input_files
@@ -107,10 +107,10 @@ def index():
         global input_type
         input_type = request.form['file-type']
         files = request.files.getlist("file")
-        for file in files: #loops through each file uploaded, saves them in uploaded_files folder and appends the filename to input_files
+        for file in files: #Loops through each file uploaded, saves them in uploaded_files folder and appends the filename to input_files
             if file and allowed_file(file.filename):
                 original_filename = secure_filename(input_title)
-                unique_filename = make_unique(original_filename) #changed from original_filename
+                unique_filename = make_unique(original_filename) 
                 title_w_unique_id.append(unique_filename) #Append title + unique number
                 file.save(os.path.join('./uploaded_files/', unique_filename))
                 input_files.append(url_for('process_file.uploaded_file', filename=unique_filename))
@@ -127,7 +127,6 @@ def index():
             sys.exit(1)
         for item in input_files:
             file_location = './uploaded_files' + item #This gives it the correct path
-            # file_location = item #This gives it the correct path (does not work)
             if file_type == 'document':
                 try:
                     raw_text = docx2txt.process(file_location) #Get a string of all the text in the doc
@@ -135,7 +134,7 @@ def index():
                 except FileNotFoundError:
                     print('Error - Document does not exist on server (It may exist on client side)')
                     sys.exit(1)
-                except BadZipFile: # Occurs when image is sent
+                except BadZipFile: # Occurs when image is sent and the document option is selected
                     print('Error - Posted file is not a document')
                     sys.exit(1)
                 japanese_only = get_japanese_only(raw_text) #Remove non-Japanese text from the string
@@ -145,20 +144,13 @@ def index():
                 combined_japanese_chars_list = list_concat(tokenized_list) #join the lists created for each file passed in together
                 print(combined_japanese_chars_list)
             elif file_type == 'image':
-                print('LINE 159=====',file_location)
                 try:
-                    # path = r"/home/heiki/.linuxbrew/Cellar/tesseract/4.1.1"
-                    # assert os.path.isfile(path)
-                    # with open(path, "r") as f:
-                    #     pass
-                    # print('line 165')
                     raw_text = pytesseract.image_to_string( #Get a string of all the text in the image via OCR
                         Image.open(file_location), lang='jpn')
                     print(raw_text)
                 except FileNotFoundError:
                     print('Error - Image does not exist')
                     sys.exit(1)
-                    print('LINE 167')
                 japanese_only = get_japanese_only(raw_text) #Remove non-Japanese text from the string
                 tokenized_list = tokenize_into_words(japanese_only) #Tokenize string into a list of words
                 combined_japanese_chars_list = list_concat(tokenized_list) #join the lists created for each file passed in together
@@ -168,8 +160,8 @@ def index():
         single_katakana_removed_list = remove_single_katakana(irrelevant_items_removed_list) #Remove single katanaka characters (which are meaningless on their own)
         single_hiragana_removed_list = remove_single_hiragana(single_katakana_removed_list) #Removes single hiragana characters (which are meaningless on their own)
         duplicate_items_removed_list = remove_duplicate_items(single_hiragana_removed_list) #Removes any duplicate words and characters in our word list
-        add_items_to_original_word_list(duplicate_items_removed_list) #Add original words to list in global scope
-        get_reading_and_eng(duplicate_items_removed_list) #Add reading and eng definition to list in global scope
+        add_items_to_original_word_list(duplicate_items_removed_list) #Add original words to list 
+        get_reading_and_eng(duplicate_items_removed_list) #Add reading and eng definition to list 
         print(kana_and_eng_def)
         #===clearing data for next user===
         tokenized_list.clear()
@@ -221,11 +213,10 @@ def index():
         del word_list #Removing data from the tuple for the next user
 
 
-        #Below we set the file name of the vocabulary list (if title box empty, default file name is 'vocabularly list - note that the webpage HTML+CSS does not actually allow there to be no title)
+        #Below we set the file name of the vocabulary list (if title box empty, default file name is 'vocabularly list - note that the frontend Bootstrap JS does not actually allow there to be no title)
         output_file_extension = '.docx'
         file_name = title_w_unique_id[0] + output_file_extension
-        # file_title.append(title_w_unique_id[0])
-        upload_directory = './output_files/' #seems to start from a different path than doc.save below
+        upload_directory = './output_files/'
         if not name:
             document.save('./output_files/' + 'Vocabulary list.docx')
             file_name = 'Vocabulary list.docx'

@@ -9,13 +9,10 @@ The program contains a customised version of the Jamdict package (Japanese-to-En
 
 There are some sample images and documents in the sample_files folder which can be used to test the application.
 
-This repository contains the core code which is on the server hosting http://heiki.pythonanywhere.com/.
-
 ============
 Installation/Usage (running the code on a Flask development server):
 ============
 
-Note: I have been unable to get this working on Windows 10 as an error occurs when installing a dependency of the docx package. So, please run the program on Mac OS or Linux. Alternatively, you can find the web app version of this app at http://heiki.pythonanywhere.com/ 
 
 1. Install tesseract and ensure that the tesseract executable is in '/usr/local/Cellar/tesseract/'
 
@@ -25,12 +22,10 @@ Note: I have been unable to get this working on Windows 10 as an error occurs wh
 
 4. Follow the install instructions for Jamdict on https://pypi.org/project/jamdict/
 
-5. Following the dependencies being installed in a virtual environment, the FLASK_APP environment variable can be set as follows 'export FLASK_APP=Heiki_V1/__init__.py'. 
-
 
 ============
 Tests Usage:
 ============
-Two tests are included in the tests folder, test_front_end.py and test_back_end.py. These have been written using Unittest and Selenium. 
+Two test files are included, test_front_end.py and test_back_end.py. These have been written using Unittest and Selenium. 
 
-To run one of the tests individually, enter 'python -m unittest tests.(file name here)' from the heiki directory. Alternatively, both tests can be ran at once by typing python -m unittest.
+To run one of the tests individually, enter 'python -m unittest (file name here)' from the Heiki_V1 directory. Alternatively, both tests can be ran at once by typing python -m unittest in the Heiki_V1 directory.
