@@ -48,6 +48,9 @@ from .jmdict import Meta, JMDEntry, KanjiForm, KanaForm, Translation, SenseGloss
 
 MY_FOLDER = os.path.dirname(os.path.abspath(__file__))
 SCRIPT_FOLDER = os.path.join(MY_FOLDER, 'data')
+# print('======DATA BELOW=====')
+# print(MY_FOLDER)
+# print(SCRIPT_FOLDER)
 JMNEDICT_SETUP_FILE = os.path.join(SCRIPT_FOLDER, 'setup_jmnedict.sql')
 JMNEDICT_VERSION = '1.08'
 JMNEDICT_URL = 'https://www.edrdg.org/enamdict/enamdict_doc.html'
