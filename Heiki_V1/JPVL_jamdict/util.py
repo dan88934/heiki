@@ -143,6 +143,7 @@ class Jamdict(object):
         # file paths configuration
         self.auto_expand = auto_expand
         self.db_file = db_file if db_file else config.get_file('JAMDICT_DB') if auto_config else None
+        print('db file location!!!', self.db_file)
         self.kd2_file = kd2_file if kd2_file else config.get_file('JAMDICT_DB') if auto_config else None
         self.jmnedict_file = jmnedict_file if jmnedict_file else config.get_file('JAMDICT_DB') if auto_config else None
         if not self.db_file or not os.path.isfile(self.db_file):

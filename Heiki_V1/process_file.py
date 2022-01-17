@@ -15,6 +15,7 @@ try:
     from PIL import Image
 except ImportError:
     import Image
+
 from zipfile import BadZipFile
     
 
@@ -130,7 +131,7 @@ def index():
             if file_type == 'document':
                 try:
                     raw_text = docx2txt.process(file_location) #Get a string of all the text in the doc
-                    print(raw_text)
+                   #  print(raw_text)  # Will not print in production server
                 except FileNotFoundError:
                     print('Error - Document does not exist on server (It may exist on client side)')
                     sys.exit(1)
@@ -138,11 +139,11 @@ def index():
                     print('Error - Posted file is not a document')
                     sys.exit(1)
                 japanese_only = get_japanese_only(raw_text) #Remove non-Japanese text from the string
-                print(japanese_only)
+                # print(japanese_only)
                 tokenized_list = tokenize_into_words(japanese_only) #Tokenize string into a list of words
-                print(tokenized_list)
+                # print(tokenized_list)
                 combined_japanese_chars_list = list_concat(tokenized_list) #join the lists created for each file passed in together
-                print(combined_japanese_chars_list)
+                # print(combined_japanese_chars_list)
             elif file_type == 'image':
                 try:
                     raw_text = pytesseract.image_to_string( #Get a string of all the text in the image via OCR
