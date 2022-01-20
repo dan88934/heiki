@@ -3,7 +3,6 @@ from werkzeug.utils import secure_filename
 import os
 from uuid import uuid4
 import pytesseract
-# import pykakasi
 from sudachipy import tokenizer, dictionary
 from JPVL_jamdict import Jamdict # removed .
 from docx import Document
