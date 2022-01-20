@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+ FROM ubuntu:18.04
 
 # STEP 2: Copy the source code in the current directory to the container.  Store it in a folder named /app.
 ADD . /app
@@ -65,14 +65,26 @@ RUN pip3 install -r requirements.txt
 #ADD ./JPVL_jamdict/data/jamdict.db /root/.jamdict/data
 #Try moving all the data files into the root data folder 
 #. /Users/dan/.jamdict/data/jamdict.db
-ADD ./JPVL_jamdict/data /root/.jamdict
+ADD ./JPVL_jamdict/data /root/.jamdict/data
 
+#Add Jamdict config file to appropriate directory 
+ADD ./JPVL_jamdict/config.json /root/.jamdict
+
+#Add tessdata files to correct path - for Tesseract OCR 
+#ADD ./tesseract/tessdata /usr/share/tesseract-ocr/4.00
+##
+#ADD ./tesseract/tessdata /usr/share/tessdata
+ADD ./tesseract/tessdata /usr/share/tesseract-ocr/4.00/tessdata
+#Set tessdata path
+#ENV TESSDATA_PREFIX="/usr/share/tesseract-ocr/4.00/tessdata"
+
+#RUN export TESSDATA_PREFIX="/usr/share/tesseract-ocr/4.00/tessdata"
+#Install Gunicorn
 RUN pip3 install gunicorn[gevent]
-
 
 EXPOSE 5000 
 
-CMD gunicorn --worker-class gevent --workers 8 --bind 0.0.0.0:5000 wsgi:app --max-requests 10000 --timeout 5 --keep-alive 5 --log-level info
+CMD gunicorn --timeout 1000 --worker-class gevent --workers 8 --bind 0.0.0.0:5000 wsgi:app --max-requests 10000 --keep-alive 5 --log-level info
 
 
 

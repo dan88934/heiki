@@ -119,7 +119,8 @@ def index():
         #File Processing#
         #################
         # pytesseract.pytesseract.tesseract_cmd = r'/home/heiki/.linuxbrew/bin/tesseract' # PythonAnywhere version
-        pytesseract.pytesseract.tesseract_cmd = r'/usr/local/Cellar/tesseract/5.0.0/bin/tesseract' #15 MBP development version
+       #  pytesseract.pytesseract.tesseract_cmd = r'/usr/local/Cellar/tesseract/5.0.0/bin/tesseract' #15 MBP development version
+        pytesseract.pytesseract.tesseract_cmd = r'/usr/bin/tesseract' # Digital Ocean VPS Version 
         tokenized_list = []
         combined_japanese_chars_list = []
         file_type = input_type #This checks the file type entered on the web app dropdown box (doc or img) and sends the files to the correct processing condition
@@ -148,7 +149,7 @@ def index():
                 try:
                     raw_text = pytesseract.image_to_string( #Get a string of all the text in the image via OCR
                         Image.open(file_location), lang='jpn')
-                    print(raw_text)
+                   # print(raw_text)
                 except FileNotFoundError:
                     print('Error - Image does not exist')
                     sys.exit(1)
@@ -163,7 +164,7 @@ def index():
         duplicate_items_removed_list = remove_duplicate_items(single_hiragana_removed_list) #Removes any duplicate words and characters in our word list
         add_items_to_original_word_list(duplicate_items_removed_list) #Add original words to list 
         get_reading_and_eng(duplicate_items_removed_list) #Add reading and eng definition to list 
-        print(kana_and_eng_def)
+       # print(kana_and_eng_def)
         #===clearing data for next user===
         tokenized_list.clear()
         combined_japanese_chars_list.clear()
