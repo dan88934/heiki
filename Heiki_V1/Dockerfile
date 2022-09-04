@@ -48,8 +48,8 @@ ADD ./tesseract/tessdata /usr/share/tesseract-ocr/4.00/tessdata
 RUN pip3 install gunicorn[gevent]
 
 #Expose port 
-EXPOSE 5000 
+EXPOSE 5050 
 
 #Start server
-CMD gunicorn --timeout 1000 --worker-class gevent --workers 8 --bind 0.0.0.0:5000 wsgi:app --max-requests 10000 --keep-alive 5 --log-level info
+CMD gunicorn --timeout 1000 --worker-class gevent --workers 8 --bind 0.0.0.0:5050 wsgi:app --max-requests 10000 --keep-alive 5 --log-level info
 
