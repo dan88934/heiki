@@ -1,4 +1,4 @@
- FROM ubuntu:18.04
+FROM ubuntu:18.04
 
 #Copy the source code in the current directory to the container.  Store it in a folder named /app.
 ADD . /app
@@ -52,4 +52,3 @@ EXPOSE 5050
 
 #Start server
 CMD gunicorn --timeout 1000 --worker-class gevent --workers 8 --bind 0.0.0.0:5050 wsgi:app --max-requests 10000 --keep-alive 5 --log-level info
-

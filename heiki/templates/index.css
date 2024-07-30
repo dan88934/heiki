@@ -1,0 +1,81 @@
+body {
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+  }
+  .blur-bg {
+    hight: 100vh;
+  }
+  .blur-bg:before {
+    background: #fff
+      url(https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1951&q=80)
+      center center fixed no-repeat;
+    background-size: cover;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    filter: blur(0.2rem);
+    -webkit-filter: blur(0.2rem);
+    z-index: -1;
+  }
+  .auth-wrapper {
+    height: 100vh;
+    background: linear-gradient(
+      90deg,
+      #33cc85 0%,
+      #33cc85 10%,
+      #33cc85 0%,
+      #33cc85 10%,
+      rgba(83, 222, 158, 0.1) 100%
+    );
+  }
+  /*common*/
+  a {
+    color: #33cc85;
+  }
+  a:hover {
+    color: #33cc85;
+  }
+  .btn:hover {
+    transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+    transition-duration: 0.3s;
+    outline: none;
+    text-decoration: none;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
+  }
+  .btn-primary {
+    color: #fff;
+    background-color: #33cc85;
+    border-color: #33cc85;
+  }
+  .btn-primary:hover,
+  .btn-primary:not([disabled]):not(.disabled).active,
+  .btn-primary:not([disabled]):not(.disabled):active,
+  .show > .btn-primary.dropdown-toggle {
+    background-color: #33cc85;
+    border-color: #33cc85;
+  }
+  .btn-primary.focus,
+  .btn-primary:focus {
+    box-shadow: none;
+  }
+  .form-control:focus {
+      border-color: #33cc85;
+      box-shadow: 0 0 0 0.2rem rgb(51 204 133 / 25%);
+  }
+   .text-xs {
+      font-size: .75rem;
+      }
+  .rounded-xl {
+    border-radius: 0.75rem;
+  }
+  .rounded-2xl {
+    border-radius: 1rem;
+  }
+  
