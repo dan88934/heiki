@@ -22,6 +22,20 @@
             background-repeat: no-repeat;
             background-size: cover;
         }
+        /* Spinner styles */
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #ffffff;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .hidden { display: none; }
     </style>
 </head>
 <body>
@@ -51,14 +65,14 @@
                 </h2>
                 <p class="mt-2 text-sm text-gray-400">Create a Japanese vocabulary list from the text in a document or image</p>
             </div>
-            <form class="mt-8 space-y-3" action="#" method="POST">
+            <form class="mt-8 space-y-3" action="/" enctype="multipart/form-data" method="POST">
                 <div class="grid grid-cols-1 space-y-2">
                     <label class="text-sm font-bold text-gray-500 tracking-wide">Title</label>
-                    <input class="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" type="" placeholder="Fishing article vocabulary">
+                    <input class="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" type="" placeholder="Fishing article vocabulary" id="title">
                 </div>
                 <div class="grid grid-cols-1 space-y-2">
                     <label class="text-sm font-bold text-gray-500 tracking-wide">File Type</label>
-                    <select class="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500">
+                    <select class="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" id="file-type">
                         <option value="image">Image</option>
                         <option value="document">Document</option>
                     </select>
@@ -87,7 +101,28 @@
                     </button>
                 </div>
             </form>
+            <div id="spinner" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+                <div class="spinner"></div>
+            </div>
         </div>
     </div>
+    <script>
+        // Show spinner during loading
+        // window.addEventListener('load', () => {
+        //     document.getElementById('spinner').classList.add('hidden');
+        // });
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                document.getElementById('spinner').classList.remove('hidden');
+            } else {
+                document.getElementById('spinner').classList.add('hidden');
+            }
+        });
+
+        // document.getElementById('uploadForm').addEventListener('submit', function(event) {
+        //     document.getElementById('spinner').classList.remove('hidden');
+        // });
+    </script>
 </body>
 </html>

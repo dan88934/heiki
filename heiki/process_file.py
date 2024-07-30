@@ -228,7 +228,7 @@ def index():
             uploaded_file_path = './uploaded_files/' + item #Path of the initially uploaded file (doc or image)
             os.remove(uploaded_file_path) #Removes the initially uploaded file (to save resources)
         title_w_unique_id.clear()
-        render_template("oldindex.html")
+        render_template("index.html")
         return send_from_directory(directory=upload_directory, path=file_name, as_attachment=True) #as_attachment keeps the original file name (the title set by user), rather than calling the file the name of the page
     return render_template("index.html")
 
