@@ -16,6 +16,12 @@
             padding: 0;
             box-sizing: border-box;
         }
+        .background-image {
+            background-image: url('bg.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
     </style>
 </head>
 <body>
@@ -36,8 +42,7 @@
             </div>
         </nav>
     </header>
-    <div class="relative min-h-screen flex items-center justify-center bg-gray-500 bg-no-repeat bg-cover"
-         style="background-image: url('https://images.unsplash.com/photo-1621243804936-775306a8f2e3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');">
+    <div class="relative min-h-screen flex items-center justify-center bg-gray-500 bg-no-repeat bg-cover background-image">
         <div class="absolute bg-black opacity-60 inset-0 z-0"></div>
         <div class="sm:max-w-lg w-full p-10 bg-white rounded-xl z-10">
             <div class="text-center">
@@ -77,9 +82,11 @@
                     <span>Supported file types: .docx, .jpg, .png</span>
                 </p>
                 <div>
-                    <button type="submit" class="my-5 w-full flex justify-center bg-blue-500 text-gray-100 p-4 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300">
+                    <button type="submit" class="my-5 w-full flex justify-center bg-gray-800 text-white p-4 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-gray-900 shadow-lg cursor-pointer transition ease-in duration-300">
                         Upload
                     </button>
+                    
+                                                         
                 </div>
             </form>
         </div>
