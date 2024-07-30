@@ -82,7 +82,7 @@
                 </h2>
                 <p class="mt-2 text-sm text-gray-400">Create a Japanese vocabulary list from the text in a document or image</p>
             </div>
-            <form class="mt-8 space-y-3" action="/" enctype="multipart/form-data" method="POST" onsubmit="showSpinner()">
+            <form class="mt-8 space-y-3" action="/" enctype="multipart/form-data" method="POST" onsubmit="showSpinner()" id="uploadForm">
                 <div class="grid grid-cols-1 space-y-2">
                     <label class="text-sm font-bold text-gray-500 tracking-wide">Title</label>
                     <input class="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" type="" placeholder="Fishing article vocabulary" name="title">
@@ -121,15 +121,54 @@
         </div>
     </div>
     <script>
-        function showSpinner() {
-            // Show the spinner when the form is submitted
-            document.getElementById('spinner-container').style.display = 'flex';
-        }
-
-        window.addEventListener('load', function() {
-            // Hide the spinner when the page loads
-            document.getElementById('spinner-container').style.display = 'none';
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+          // Prevent default form submission to handle it via JavaScript
+          event.preventDefault();
+        
+          // Show the spinner
+          document.getElementById('spinner').style.display = 'block';
+        
+          // Create a FormData object from the form
+          var formData = new FormData(this);
+        
+          // Send the form data via fetch API
+          fetch('/', {
+            method: 'POST',
+            body: formData
+          })
+          .then(response => {
+            // Handle the response
+            if (response.ok) {
+              return response.blob();  // Get the response as a blob
+            } else {
+              throw new Error('Network response was not ok.');
+            }
+          })
+          .then(blob => {
+            // Create a temporary URL for the blob
+            var url = window.URL.createObjectURL(blob);
+        
+            // Create an anchor element and trigger the download
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = ''; // Leave the filename blank to avoid overriding the server-set filename
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+        
+            // Revoke the temporary URL
+            window.URL.revokeObjectURL(url);
+        
+            // Hide the spinner
+            document.getElementById('spinner').style.display = 'none';
+          })
+          .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+            // Hide the spinner in case of an error
+            document.getElementById('spinner').style.display = 'none';
+          });
         });
+        </script>
     </script>
 </body>
 </html>
