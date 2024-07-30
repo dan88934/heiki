@@ -1,72 +1,80 @@
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>
-            .has-mask {
-                position: absolute;
-                clip: rect(10px, 150px, 130px, 10px);
-            }
-        </style>
-    </head>
-    <body>
-        <header>
-            <nav class="bg-transparent">
-                <div class="flex justify-between h-16 px-10 shadow items-center">
-                    <div class="flex items-center space-x-8">
-                        <h1 class="text-2xl lg:text-2xl font-bold cursor-pointer">Heiki</h1>
-                        <div class="hidden md:flex justify-around space-x-4">
-                            <!-- <a href="#" class="hover:text-indigo-600 text-gray-700">Github</a> -->
-                        </div>
-                    </div>
-                    <div class="flex space-x-4 items-center">
-                        <!-- <a href="#" class="text-gray-800 text-sm">LOGIN</a>
-                        <a href="#" class="bg-indigo-600 px-4 py-2 rounded text-white hover:bg-indigo-500 text-sm">SIGNUP</a> -->
-                        <a href="#" class="hover:text-indigo-600 text-gray-700">GitHub</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transparent Navbar Example</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .has-mask {
+            position: absolute;
+            clip: rect(10px, 150px, 130px, 10px);
+        }
+        /* Additional custom styles */
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="bg-transparent fixed w-full z-50">
+            <div class="flex justify-between h-16 px-10 items-center">
+                <div class="flex items-center space-x-8">
+                    <h1 class="text-2xl lg:text-2xl font-bold cursor-pointer text-white">Heiki</h1>
+                    <div class="hidden md:flex justify-around space-x-4">
+                        <!-- <a href="#" class="hover:text-indigo-600 text-gray-700">Github</a> -->
                     </div>
                 </div>
-            </nav>
-        </header>
-        <div class="relative min-h-screen flex items-center justify-center bg-gray-500 bg-no-repeat bg-cover" 
-             style="background-image: url('https://images.unsplash.com/photo-1621243804936-775306a8f2e3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');">
-            <div class="absolute bg-black opacity-60 inset-0 z-0"></div>
-            <div class="sm:max-w-lg w-full p-10 bg-white rounded-xl z-10">
-                <div class="text-center">
-                    <h2 class="mt-5 text-3xl font-bold text-gray-900">
-                        File Upload!
-                    </h2>
-                    <p class="mt-2 text-sm text-gray-400">Lorem ipsum is placeholder text.</p>
+                <div class="flex space-x-4 items-center">
+                    <!-- <a href="#" class="text-gray-800 text-sm">LOGIN</a>
+                    <a href="#" class="bg-indigo-600 px-4 py-2 rounded text-white hover:bg-indigo-500 text-sm">SIGNUP</a> -->
+                    <a href="#" class="hover:text-indigo-600 text-gray-700">GitHub</a>
                 </div>
-                <form class="mt-8 space-y-3" action="#" method="POST">
-                    <div class="grid grid-cols-1 space-y-2">
-                        <label class="text-sm font-bold text-gray-500 tracking-wide">Title</label>
-                        <input class="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" type="" placeholder="mail@gmail.com">
-                    </div>
-                    <div class="grid grid-cols-1 space-y-2">
-                        <label class="text-sm font-bold text-gray-500 tracking-wide">Attach Document</label>
-                        <div class="flex items-center justify-center w-full">
-                            <label class="flex flex-col rounded-lg border-4 border-dashed w-full h-60 p-10 group text-center">
-                                <div class="h-full w-full text-center flex flex-col items-center justify-center items-center">
-                                    <div class="flex flex-auto max-h-48 w-2/5 mx-auto -mt-10">
-                                        <img class="has-mask h-36 object-center" src="https://img.freepik.com/free-vector/image-upload-concept-landing-page_52683-27130.jpg?size=338&ext=jpg" alt="freepik image">
-                                    </div>
-                                    <p class="pointer-none text-gray-500"><span class="text-sm">Drag and drop</span> files here <br> or <a href="" id="" class="text-blue-600 hover:underline">select a file</a> from your computer</p>
-                                </div>
-                                <input type="file" class="hidden">
-                            </label>
-                        </div>
-                    </div>
-                    <p class="text-sm text-gray-300">
-                        <span>File type: doc,pdf,types of images</span>
-                    </p>
-                    <div>
-                        <button type="submit" class="my-5 w-full flex justify-center bg-blue-500 text-gray-100 p-4 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300">
-                            Upload
-                        </button>
-                    </div>
-                </form>
             </div>
+        </nav>
+    </header>
+    <div class="relative min-h-screen flex items-center justify-center bg-gray-500 bg-no-repeat bg-cover"
+         style="background-image: url('https://images.unsplash.com/photo-1621243804936-775306a8f2e3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');">
+        <div class="absolute bg-black opacity-60 inset-0 z-0"></div>
+        <div class="sm:max-w-lg w-full p-10 bg-white rounded-xl z-10">
+            <div class="text-center">
+                <h2 class="mt-5 text-3xl font-bold text-gray-900">
+                    File Upload!
+                </h2>
+                <p class="mt-2 text-sm text-gray-400">Lorem ipsum is placeholder text.</p>
+            </div>
+            <form class="mt-8 space-y-3" action="#" method="POST">
+                <div class="grid grid-cols-1 space-y-2">
+                    <label class="text-sm font-bold text-gray-500 tracking-wide">Title</label>
+                    <input class="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" type="" placeholder="mail@gmail.com">
+                </div>
+                <div class="grid grid-cols-1 space-y-2">
+                    <label class="text-sm font-bold text-gray-500 tracking-wide">Attach Document</label>
+                    <div class="flex items-center justify-center w-full">
+                        <label class="flex flex-col rounded-lg border-4 border-dashed w-full h-60 p-10 group text-center">
+                            <div class="h-full w-full text-center flex flex-col items-center justify-center items-center">
+                                <div class="flex flex-auto max-h-48 w-2/5 mx-auto -mt-10">
+                                    <img class="has-mask h-36 object-center" src="https://img.freepik.com/free-vector/image-upload-concept-landing-page_52683-27130.jpg?size=338&ext=jpg" alt="freepik image">
+                                </div>
+                                <p class="pointer-none text-gray-500"><span class="text-sm">Drag and drop</span> files here <br> or <a href="" id="" class="text-blue-600 hover:underline">select a file</a> from your computer</p>
+                            </div>
+                            <input type="file" class="hidden">
+                        </label>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-300">
+                    <span>File type: doc,pdf,types of images</span>
+                </p>
+                <div>
+                    <button type="submit" class="my-5 w-full flex justify-center bg-blue-500 text-gray-100 p-4 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300">
+                        Upload
+                    </button>
+                </div>
+            </form>
         </div>
-    </body>
+    </div>
+</body>
 </html>
