@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transparent Navbar Example</title>
+    <title>Heiki</title>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <style>
         .has-mask {
@@ -23,7 +23,7 @@
         <nav class="bg-transparent fixed w-full z-50">
             <div class="flex justify-between h-16 px-10 items-center">
                 <div class="flex items-center space-x-8">
-                    <h1 class="text-2xl lg:text-2xl font-bold cursor-pointer text-white">Heiki</h1>
+                    <h1 class="text-4xl lg:text-4xl font-bold cursor-pointer text-white">Heiki</h1>
                     <div class="hidden md:flex justify-around space-x-4">
                         <!-- <a href="#" class="hover:text-indigo-600 text-gray-700">Github</a> -->
                     </div>
@@ -31,7 +31,7 @@
                 <div class="flex space-x-4 items-center">
                     <!-- <a href="#" class="text-gray-800 text-sm">LOGIN</a>
                     <a href="#" class="bg-indigo-600 px-4 py-2 rounded text-white hover:bg-indigo-500 text-sm">SIGNUP</a> -->
-                    <a href="#" class="hover:text-indigo-600 text-gray-700">GitHub</a>
+                    <a href="https://github.com/dan88934/heiki/" target="_blank" class="hover:text-blue-500 text-white">GitHub</a>
                 </div>
             </div>
         </nav>
@@ -42,17 +42,25 @@
         <div class="sm:max-w-lg w-full p-10 bg-white rounded-xl z-10">
             <div class="text-center">
                 <h2 class="mt-5 text-3xl font-bold text-gray-900">
-                    File Upload!
+                    Vocabulary List Generator
                 </h2>
-                <p class="mt-2 text-sm text-gray-400">Lorem ipsum is placeholder text.</p>
+                <p class="mt-2 text-sm text-gray-400">Create a Japanese vocabulary list from the text in a document or image</p>
             </div>
             <form class="mt-8 space-y-3" action="#" method="POST">
                 <div class="grid grid-cols-1 space-y-2">
                     <label class="text-sm font-bold text-gray-500 tracking-wide">Title</label>
-                    <input class="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" type="" placeholder="mail@gmail.com">
+                    <input class="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" type="" placeholder="Fishing article vocabulary">
                 </div>
                 <div class="grid grid-cols-1 space-y-2">
-                    <label class="text-sm font-bold text-gray-500 tracking-wide">Attach Document</label>
+                    <label class="text-sm font-bold text-gray-500 tracking-wide">File Type</label>
+                    <select class="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500">
+                        <option value="image">Image</option>
+                        <option value="document">Document</option>
+                    </select>
+                </div>
+                
+                <div class="grid grid-cols-1 space-y-2">
+                    <label class="text-sm font-bold text-gray-500 tracking-wide">Select File</label>
                     <div class="flex items-center justify-center w-full">
                         <label class="flex flex-col rounded-lg border-4 border-dashed w-full h-60 p-10 group text-center">
                             <div class="h-full w-full text-center flex flex-col items-center justify-center items-center">
@@ -66,7 +74,7 @@
                     </div>
                 </div>
                 <p class="text-sm text-gray-300">
-                    <span>File type: doc,pdf,types of images</span>
+                    <span>Supported file types: .docx, .jpg, .png</span>
                 </p>
                 <div>
                     <button type="submit" class="my-5 w-full flex justify-center bg-blue-500 text-gray-100 p-4 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300">
