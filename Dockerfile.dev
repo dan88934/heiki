@@ -1,3 +1,4 @@
+# Optimised for Apple Silicon
 FROM ubuntu:18.04
 
 #Set working directory to /app so we can execute commands in it
