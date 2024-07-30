@@ -1,8 +1,5 @@
 FROM ubuntu:18.04
 
-#Copy the source code in the current directory to the container.  Store it in a folder named /app.
-ADD ./heiki /app
-
 #Set working directory to /app so we can execute commands in it
 WORKDIR /app
 
@@ -46,6 +43,9 @@ ADD ./heiki/tesseract/tessdata /usr/share/tesseract-ocr/4.00/tessdata
 
 #Install Gunicorn
 RUN pip3 install gunicorn[gevent]
+
+#Copy the source code in the current directory to the container.  Store it in a folder named /app.
+ADD ./heiki /app
 
 #Expose port 
 EXPOSE 5050 
