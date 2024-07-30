@@ -36,10 +36,10 @@ RUN pip3 install --upgrade jamdict
 RUN pip3 install -r requirements.txt
 
 #Add Jamdict DB to appropriate path 
-ADD ./JPVL_jamdict/data /root/.jamdict/data
+ADD ./heiki/JPVL_jamdict/data /root/.jamdict/data
 
 #Add Jamdict config file to appropriate directory 
-ADD ./JPVL_jamdict/config.json /root/.jamdict
+ADD ./heiki/JPVL_jamdict/config.json /root/.jamdict
 
 #Add tessdata files to correct path - for Tesseract OCR 
 ADD ./heiki/tesseract/tessdata /usr/share/tesseract-ocr/4.00/tessdata
