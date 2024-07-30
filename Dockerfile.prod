@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 
 #Copy the source code in the current directory to the container.  Store it in a folder named /app.
-ADD . /app
+ADD ./heiki /app
 
 #Set working directory to /app so we can execute commands in it
 WORKDIR /app
@@ -36,13 +36,13 @@ RUN pip3 install --upgrade jamdict
 RUN pip3 install -r requirements.txt
 
 #Add Jamdict DB to appropriate path 
-ADD ../JPVL_jamdict/data /root/.jamdict/data
+ADD ./JPVL_jamdict/data /root/.jamdict/data
 
 #Add Jamdict config file to appropriate directory 
-ADD ../JPVL_jamdict/config.json /root/.jamdict
+ADD ./JPVL_jamdict/config.json /root/.jamdict
 
 #Add tessdata files to correct path - for Tesseract OCR 
-ADD ./tesseract/tessdata /usr/share/tesseract-ocr/4.00/tessdata
+ADD ./heiki/tesseract/tessdata /usr/share/tesseract-ocr/4.00/tessdata
 
 #Install Gunicorn
 RUN pip3 install gunicorn[gevent]
