@@ -28,4 +28,4 @@ Tests Usage:
 ============
 Two test files are included, test_front_end.py and test_back_end.py. These have been written using Unittest and Selenium. 
 
-To run one of the tests individually, enter 'python -m unittest (file name here)' from the Heiki_V1 directory. Alternatively, both tests can be ran at once by typing python -m unittest in the Heiki_V1 directory.
+To run one of the tests individually, enter 'python -m unittest (file name here)' from the heiki directory. Alternatively, both tests can be ran at once by typing python -m unittest in the heiki directory.

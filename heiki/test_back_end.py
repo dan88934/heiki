@@ -1,8 +1,6 @@
 import unittest
 from flask import Flask
-# from Heiki_V1.process_file import get_japanese_only, tokenize_into_words, list_concat, remove_duplicate_items, remove_irrelevant_characters, remove_single_katakana, remove_single_hiragana, add_items_to_original_word_list, get_reading_and_eng
 from process_file import get_japanese_only, tokenize_into_words, list_concat, remove_duplicate_items, remove_irrelevant_characters, remove_single_katakana, remove_single_hiragana, add_items_to_original_word_list, get_reading_and_eng
-# from Heiki_V1.app import app
 from app import app
 from io import BytesIO, StringIO
 

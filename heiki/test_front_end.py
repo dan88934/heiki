@@ -5,7 +5,6 @@ import unittest
 from flask import url_for
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
-# from Heiki_V1.app import app
 from app import app
 import pathlib
 import time
