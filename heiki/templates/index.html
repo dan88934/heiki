@@ -54,7 +54,7 @@
 <body>
     <!-- Spinner Container -->
     <div id="spinner-container" class="spinner-container">
-        <div class="spinner"></div>
+        <div class="spinner" id="spinner"></div>
     </div>
     <header>
         <nav class="bg-transparent fixed w-full z-50">
@@ -82,7 +82,7 @@
                 </h2>
                 <p class="mt-2 text-sm text-gray-400">Create a Japanese vocabulary list from the text in a document or image</p>
             </div>
-            <form class="mt-8 space-y-3" action="/" enctype="multipart/form-data" method="POST" onsubmit="showSpinner()" id="uploadForm">
+            <form class="mt-8 space-y-3" action="/" enctype="multipart/form-data" method="POST" id="uploadForm">
                 <div class="grid grid-cols-1 space-y-2">
                     <label class="text-sm font-bold text-gray-500 tracking-wide">Title</label>
                     <input class="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" type="" placeholder="Fishing article vocabulary" name="title">
