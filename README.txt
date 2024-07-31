@@ -5,6 +5,15 @@ Description:
 ============
 Heiki is a flask-based web app which allows users to generate Japanese language vocabulary lists from image(s) or document(s). The vocabulary list can be downloaded by the user, and will be in a Word document (.docx) format.
 
+Below is an example of an input image: 
+![Japanese input document](https://github.com/dan88934/heiki/blob/main/heiki/static/img/DocumentExample.png)
+
+![Japanese input document](https://github.com/dan88934/heiki/blob/main/DocumentExample.png?raw=true)
+
+Heiki will use OCR to process the text from the above image and will use tokenisation to split the text up into indvidiual words. It will then get the English definition of each word and insert the main Japanese text (usually Kanji), the reading (usually Hiragana), and the English definition into a a table. This produces the vocabulary list that can be seen below:
+
+[Vocab list output document](https://github.com/dan88934/heiki/blob/main/heiki/static/img/VocabListExample.png)
+
 The program contains a customised version of the Jamdict package (Japanese-to-English dictionary for Python).
 
 There are some sample images and documents in the sample_files folder which can be used to test the application.
